@@ -1,33 +1,24 @@
-# What is Database normalization
+# Database Normalization: An In-Depth Overview
 
-it is the process of organizing data to minimize data redundancy (data duplication), which in turn ensures data consistency.
-
-**Problems of Data Redundancy** 
-
-1. Disk Space Wastage
-2. Data Inconsistency
-3. DML queries can become slow(insert, update, delete)
-
-#### There are 6 normal forms 1NF to 6NF
-
-<mark>*Most Databases are in Third NF(3NF)*</mark>
+## Introduction:
+Database normalization is a crucial concept in database design aimed at organizing and structuring data to reduce redundancy, improve data integrity, and enhance overall database performance. The normalization process involves breaking down large tables into smaller, related tables, each serving a specific purpose. There are several normal forms (NF) to guide this process, from 1NF to 6NF.
 
 ## 1NF
 
-1. data in a each column should be <u>atomic</u>. No <u>multiple values</u>, separated by comma.
-2. table does not contain any mark.
-3. identify record uniquely using <u>Primary Key</u>.
+1. Data in each column should be atomic. No multiple values, separated by a comma.
+2. The table does not contain any marks.
+3. Identify records uniquely using Primary Key.
 
 **Problems**
-1. not possible to select, insert, delete and update just one employee.
-2. table structure change required every time and waste disk space.
+1. Not possible to select, insert, delete, and update just one employee.
+2. Table structure change required every time and waste disk space.
 
 | DeptName | Emp              |
 |----------|------------------|
 | IT       | Sam, Mike, Shan  |
 | HR       | Pam              |
 
-**Below table meets all 1NF conditions**
+**Below table meets all 1NF conditions:**
 
 *Department Table*
 
@@ -45,12 +36,11 @@ it is the process of organizing data to minimize data redundancy (data duplicati
 | 1      | Shan    |
 | 2      | Pam     |
 
-
 ## 2NF
 
-1. meets <u>all condition of 1NF</u>.
-2. move <u>Redundant data</u> to separate the table.
-3. create <u>Relationship</u> between tables using <u>foreign keys</u>.
+1. Meets all conditions of 1NF.
+2. Move Redundant data to separate the table.
+3. Create Relationship between tables using foreign keys.
 
 **Problems of Redundancy**
 
@@ -66,11 +56,10 @@ it is the process of organizing data to minimize data redundancy (data duplicati
 | 4     | Mary    | F   | 5000| HR       | Mike     | Sydney  |
 | 5     | Todd    | M   | 3000| IT       | John     | London  |
 
+*In above table what if IT department head is changed to Jane?*
+*We need to update all records in Emp table*
 
-*In above table what if IT department head is changed to jane?*
-*we need to update all records in Emp table*
-
-**Below table meets all 2NF conditions**
+**Below table meets all 2NF conditions:**
 
 *Employee Table*
 
@@ -91,8 +80,8 @@ it is the process of organizing data to minimize data redundancy (data duplicati
 
 ## 3NF
 
-1. Meets **all conditions of 2NF**.
-2. Remove **transitive dependencies**.
+1. Meets all conditions of 2NF.
+2. Remove transitive dependencies.
 
 **Problems of Transitive Dependencies:**
 1. Disk Space Wastage.
@@ -140,8 +129,8 @@ Understanding the principles of normalization and recognizing the types of depen
 
 ## 4NF
 
-1. Meets **all conditions of 3NF**.
-2. Handle **multivalued dependencies**.
+1. Meets all conditions of 3NF.
+2. Handle multivalued dependencies.
 
 **Problems of Multivalued Dependencies:**
 1. Disk Space Wastage.
@@ -192,8 +181,8 @@ Understanding the principles of normalization and recognizing the types of depen
 
 ## 5NF
 
-1. Meets **all conditions of 4NF**.
-2. Handle **join dependencies**.
+1. Meets all conditions of 4NF.
+2. Handle join dependencies.
 
 **Problems of Join Dependencies:**
 1. Disk Space Wastage.
@@ -250,14 +239,14 @@ Understanding the principles of normalization and recognizing the types of depen
 
 ## 6NF
 
-1. Meets **all conditions of 5NF**.
-2. Handles **certain types of temporal dependencies**.
+1. Meets all conditions of 5NF.
+2. Handles certain types of temporal dependencies.
 
 **Example Scenario for 6NF:**
 
 Consider a scenario where you want to track changes to a particular attribute over time, and you need to maintain a complete history of all changes. This could be relevant in scenarios involving historical data, versioning, or slowly changing dimensions.
 
-## Example - Not in 6NF
+### Example - Not in 6NF
 
 | Employee | Salary | EffectiveDate |
 |----------|--------|---------------|
